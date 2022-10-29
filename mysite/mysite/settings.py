@@ -38,8 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #applications created by me
+    # 3rd Party
+    #'django_extension',
+
+    #Local Apps
+    #'apps.account.apps.AccountsConfig',
+    #'apps.questions.apps.QuestionsConfig',
+    #'apps.common.apps.CommonConfig',
+
     'musicapp',
+    'rest_framework',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +87,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+       'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -115,7 +124,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+#Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
@@ -124,3 +133,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+  "DEFAULT_AUTHENTICATION_CLASSES":(
+      "rest_framework.authentication.SessionAuthentication",
+      "rest_framework.authentication.BasicAuthentication",
+      "rest_framework.authentication.TokenAuthentication"
+  )
+}
